@@ -17,4 +17,23 @@ public sealed class AppDbContext : DbContext
             Directory.CreateDirectory(folder); options.UseSqlite($"Data Source={Path.Combine(folder, "movebreak.db")}");
         }
     }
+
+    public void EnsureCurrentSchema()
+    {
+        Database.OpenConnection();
+        try
+        {
+            using var check = Database.GetDbConnection().CreateCommand();
+            check.CommandText = "PRAGMA table_info('Settings');";
+            using var reader = check.ExecuteReader();
+            var hasLanguage = false;
+            while (reader.Read())
+                hasLanguage |= string.Equals(reader.GetString(1), "LanguageCode", StringComparison.OrdinalIgnoreCase);
+            reader.Close();
+
+            if (!hasLanguage)
+                Database.ExecuteSqlRaw("ALTER TABLE Settings ADD COLUMN LanguageCode TEXT NOT NULL DEFAULT 'en';");
+        }
+        finally { Database.CloseConnection(); }
+    }
 }

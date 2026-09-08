@@ -23,5 +23,5 @@ public sealed class WorkTimerService
     public void Reset() { _activeSeconds=0; _snoozeSeconds=0; IsRunning=true; Tick?.Invoke(); }
     public void Snooze(int minutes) { _activeSeconds=0; _snoozeSeconds=minutes*60; IsRunning=true; Tick?.Invoke(); }
     public void FinishBreak() { _activeSeconds=0; _snoozeSeconds=0; IsRunning=true; Tick?.Invoke(); }
-    public string Status => _systemPaused ? "متوقف به‌دلیل عدم فعالیت" : IsRunning ? "در حال کار" : "متوقف‌شده";
+    public string StatusKey => _systemPaused ? "StatusInactive" : IsRunning ? "StatusWorking" : "StatusPaused";
 }

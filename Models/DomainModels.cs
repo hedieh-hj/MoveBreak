@@ -6,11 +6,15 @@ public enum BreakResult { Completed, Skipped, Snoozed }
 public sealed class Exercise
 {
     public int Id { get; set; }
-    public string Title { get; set; } = "";
-    public string Instructions { get; set; } = "";
+    public string TitleEn { get; set; } = "";
+    public string TitleFa { get; set; } = "";
+    public string InstructionsEn { get; set; } = "";
+    public string InstructionsFa { get; set; } = "";
     public ExerciseCategory Category { get; set; }
     public int DurationSeconds { get; set; }
     public string ImagePath { get; set; } = "";
+    public string GetTitle(string languageCode) => languageCode == "fa" ? TitleFa : TitleEn;
+    public string GetInstructions(string languageCode) => languageCode == "fa" ? InstructionsFa : InstructionsEn;
 }
 public sealed class BreakRecord
 {
@@ -37,4 +41,5 @@ public sealed class AppSettings
     public bool StartWithWindows { get; set; }
     public bool EyeRuleEnabled { get; set; } = true;
     public bool DarkMode { get; set; }
+    public string LanguageCode { get; set; } = "en";
 }

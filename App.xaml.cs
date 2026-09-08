@@ -15,12 +15,14 @@ public partial class App : System.Windows.Application
         base.OnStartup(e);
         var services = new ServiceCollection();
         services.AddDbContextFactory<AppDbContext>();
-        services.AddSingleton<SettingsService>(); services.AddSingleton<ExerciseService>();
+        services.AddSingleton<SettingsService>(); services.AddSingleton<LocalizationService>(); services.AddSingleton<ExerciseService>();
         services.AddSingleton<ActivityMonitorService>(); services.AddSingleton<NotificationService>();
         services.AddSingleton<WorkTimerService>(); services.AddSingleton<MainViewModel>(); services.AddSingleton<MainWindow>();
         _provider = services.BuildServiceProvider();
-        using (var db = _provider.GetRequiredService<IDbContextFactory<AppDbContext>>().CreateDbContext()) db.Database.EnsureCreated();
-        _provider.GetRequiredService<SettingsService>().LoadAsync().GetAwaiter().GetResult();
+        using (var db = _provider.GetRequiredService<IDbContextFactory<AppDbContext>>().CreateDbContext()) { db.Database.EnsureCreated(); db.EnsureCurrentSchema(); }
+        var settings = _provider.GetRequiredService<SettingsService>();
+        settings.LoadAsync().GetAwaiter().GetResult();
+        _provider.GetRequiredService<LocalizationService>().Apply(settings.Current.LanguageCode);
         _provider.GetRequiredService<MainWindow>().Show();
     }
     protected override void OnExit(ExitEventArgs e) { _provider?.Dispose(); base.OnExit(e); }
