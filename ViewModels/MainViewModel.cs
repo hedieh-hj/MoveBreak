@@ -122,8 +122,7 @@ public partial class MainViewModel : ObservableObject
         if (_timer.ShouldDeferNotification) return;
         WpfApplication.Current.Dispatcher.Invoke(() =>
         {
-            _currentExerciseModel = _exerciseService.Next(EyeRuleEnabled, ReminderMinutes);
-            CurrentExercise = ToDisplayItem(_currentExerciseModel);
+            SelectNextExercise();
             IsBreakVisible = true;
             _timer.Pause();
             _notifications.ShowBreak(_localization.Text("BreakNotificationTitle"), CurrentExercise.Title, SoundEnabled);
@@ -139,7 +138,14 @@ public partial class MainViewModel : ObservableObject
 
     [RelayCommand] private void Restart() => _timer.Reset();
     [RelayCommand] private async Task CompleteAsync() { await RecordAsync(BreakResult.Completed); IsBreakVisible = false; _timer.FinishBreak(); }
-    [RelayCommand] private async Task SkipAsync() { await RecordAsync(BreakResult.Skipped); IsBreakVisible = false; _timer.FinishBreak(); }
+    [RelayCommand]
+    private async Task SkipAsync()
+    {
+        await RecordAsync(BreakResult.Skipped);
+        SelectNextExercise();
+        IsBreakVisible = false;
+        _timer.FinishBreak();
+    }
     [RelayCommand] private async Task SnoozeAsync() { await RecordAsync(BreakResult.Snoozed); IsBreakVisible = false; _timer.Snooze(5); }
 
     [RelayCommand]
@@ -168,6 +174,12 @@ public partial class MainViewModel : ObservableObject
 
     private static System.Windows.Media.SolidColorBrush Brush(string color) => new(
         (System.Windows.Media.Color)System.Windows.Media.ColorConverter.ConvertFromString(color));
+
+    private void SelectNextExercise()
+    {
+        _currentExerciseModel = _exerciseService.Next(EyeRuleEnabled, ReminderMinutes, _currentExerciseModel.Id);
+        CurrentExercise = ToDisplayItem(_currentExerciseModel);
+    }
 
     private async Task RecordAsync(BreakResult result)
     {

@@ -83,12 +83,13 @@ public sealed class ExerciseService
             "۵ ثانیه به انگشتی در فاصله یک دست و سپس ۵ ثانیه به جسمی دور نگاه کنید؛ بدون فشار ۴ بار تکرار کنید.")
     };
 
-    public Exercise Next(bool eyeRule, int elapsedMinutes)
+    public Exercise Next(bool eyeRule, int elapsedMinutes, int? excludedExerciseId = null)
     {
-        var eyeExercises = All.Where(x => x.Category == ExerciseCategory.Eye).ToArray();
+        var available = All.Where(x => x.Id != excludedExerciseId).ToArray();
+        var eyeExercises = available.Where(x => x.Category == ExerciseCategory.Eye).ToArray();
         if (eyeRule && elapsedMinutes >= 20 && _random.NextDouble() < .35)
             return eyeExercises[_random.Next(eyeExercises.Length)];
-        return All[_random.Next(All.Count)];
+        return available[_random.Next(available.Length)];
     }
 
     private static Exercise Exercise(int id, ExerciseCategory category, int duration, string image,
