@@ -1,0 +1,6 @@
+<Application x:Class="MoveBreak.App" xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" ShutdownMode="OnExplicitShutdown">
+  <Application.Resources>
+    <SolidColorBrush x:Key="Accent" Color="#4F8F86"/><SolidColorBrush x:Key="Surface" Color="#FFFFFF"/><SolidColorBrush x:Key="BackgroundBrush" Color="#F4F7F6"/><SolidColorBrush x:Key="ForegroundBrush" Color="#263A37"/><SolidColorBrush x:Key="MutedBrush" Color="#60706D"/>
+    <Style TargetType="Button"><Setter Property="Padding" Value="18,10"/><Setter Property="Margin" Value="4"/><Setter Property="BorderThickness" Value="0"/><Setter Property="Cursor" Value="Hand"/></Style>
+  </Application.Resources>
+</Application>

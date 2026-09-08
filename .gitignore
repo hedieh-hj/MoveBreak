@@ -1,0 +1,10 @@
+bin/
+obj/
+.vs/
+.idea/
+.dotnet/
+.localappdata/
+.appdata/
+*.user
+*.suo
+*.db
