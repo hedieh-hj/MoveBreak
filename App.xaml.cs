@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using System.Windows;
 using MoveBreak.Data;
 using MoveBreak.Services;
 using MoveBreak.ViewModels;
