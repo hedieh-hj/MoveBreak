@@ -6,7 +6,7 @@ The app runs quietly in the Windows System Tray, pauses its sitting timer when t
 
 ## Features
 
-- Configurable reminder interval and break duration
+- Configurable reminder interval
 - Large countdown to the next break
 - Start, pause, resume, restart, skip, and five-minute snooze controls
 - 18 illustrated exercises for the neck, shoulders, back, wrists, legs, and eyes
@@ -45,7 +45,7 @@ MoveBreak/
 ├── Assets/Exercises/    Offline exercise illustrations
 ├── Data/                EF Core database context and schema updates
 ├── Models/              Domain models and localized display models
-├── Resources/           English and Persian resource dictionaries
+├── Resources/           English, Persian, and Spanish resource dictionaries
 ├── Services/            Timer, activity, notification, settings, and localization services
 ├── ViewModels/          Presentation state and commands
 └── Views/               WPF windows and controls
@@ -55,8 +55,15 @@ Timer logic, Windows activity monitoring, notifications, persistence, localizati
 
 ## Requirements
 
-- Windows 10 version 1809 or later
-- .NET 8 SDK for building from source
+- Windows 10 version 1809 or later (64-bit)
+- No .NET installation is required when using the standalone release
+- .NET 8 SDK is required only when building from source
+
+## Download the Standalone App
+
+Download `MoveBreak.exe` from the [latest GitHub Release](https://github.com/hedieh-hj/MoveBreak/releases/latest) and run it directly. The release is a self-contained, single-file Windows executable: it includes the required .NET runtime and SQLite native library, so there is no installer and no additional dependency to install.
+
+The executable is currently unsigned. Windows SmartScreen may therefore display an **Unknown publisher** warning. If the file was downloaded from this repository's official Releases page, choose **More info > Run anyway**.
 
 ## Run from Source
 
@@ -71,19 +78,22 @@ dotnet run
 
 Closing the main window keeps MoveBreak running in the System Tray. Use the tray menu to reopen, pause, resume, or exit the application.
 
-## Build a Standalone Windows Version
+## Build the Single-file Windows Version
 
-To publish a self-contained 64-bit Windows build:
+Restore the Windows runtime package and use the included publish profile:
 
 ```powershell
-dotnet publish -c Release -r win-x64 --self-contained true
+dotnet restore MoveBreak.csproj --runtime win-x64
+dotnet publish MoveBreak.csproj -c Release -r win-x64 --self-contained true --no-restore -p:PublishProfile=Properties/PublishProfiles/win-x64.pubxml -o artifacts/MoveBreak-win-x64
 ```
 
-The published files will be available under:
+The distributable file will be:
 
 ```text
-bin/Release/net8.0-windows10.0.17763.0/win-x64/publish/
+artifacts/MoveBreak-win-x64/MoveBreak.exe
 ```
+
+Only `MoveBreak.exe` needs to be distributed. Publishing a tag such as `v0.1.0` also makes the GitHub workflow create a Release and attach the executable automatically.
 
 ## Local Data and Privacy
 
@@ -110,7 +120,7 @@ No account is required, and the application does not upload activity information
 - Improved session and historical statistics
 - Better detection of presentations and online meetings
 - Accessibility improvements and keyboard navigation
-- MSIX packaging, signing, and automated GitHub releases
+- Code signing and an optional installer
 - Automated tests for timer and reminder policies
 
 ## Contributing

@@ -5,6 +5,7 @@ obj/
 .dotnet/
 .localappdata/
 .appdata/
+artifacts/
 *.user
 *.suo
 *.db

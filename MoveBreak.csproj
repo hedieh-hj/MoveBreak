@@ -8,6 +8,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <ApplicationIcon>Assets\MoveBreak.ico</ApplicationIcon>
+    <AssemblyName>MoveBreak</AssemblyName>
+    <Product>MoveBreak</Product>
+    <Description>Offline movement and eye-break reminders for Windows.</Description>
+    <Version>0.1.0</Version>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
