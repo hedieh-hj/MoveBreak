@@ -101,7 +101,13 @@
                         <StackPanel>
                             <TextBlock Text="{DynamicResource Scheduling}" FontSize="24" FontWeight="SemiBold"/>
                             <TextBlock Text="{DynamicResource Language}" Margin="0,22,0,5"/>
-                            <ComboBox ItemsSource="{Binding Languages}" DisplayMemberPath="DisplayName" SelectedValuePath="Code" SelectedValue="{Binding SelectedLanguageCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="10"/>
+                            <ComboBox ItemsSource="{Binding Languages}" SelectedValuePath="Code" SelectedValue="{Binding SelectedLanguageCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="10">
+                                <ComboBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding DisplayName}"/>
+                                    </DataTemplate>
+                                </ComboBox.ItemTemplate>
+                            </ComboBox>
                             <TextBlock Text="{DynamicResource ReminderInterval}" Margin="0,14,0,5"/>
                             <TextBox Text="{Binding ReminderMinutes, UpdateSourceTrigger=PropertyChanged}" Padding="10"/>
                             <CheckBox IsChecked="{Binding EyeRuleEnabled}" Content="{DynamicResource EyeRule}" Margin="0,18,0,5"/>
