@@ -17,10 +17,10 @@ jobs:
 
     steps:
       - name: Check out the repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install .NET 8 SDK
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 8.0.x
 
@@ -47,7 +47,7 @@ jobs:
           Get-Item -LiteralPath $executable | Format-List Name, Length, LastWriteTime
 
       - name: Upload the standalone executable
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: MoveBreak-win-x64
           path: artifacts/MoveBreak-win-x64/MoveBreak.exe
