@@ -20,12 +20,12 @@ The app runs quietly in the Windows System Tray, pauses its sitting timer when t
 - Optional notification sound
 - Optional launch at Windows startup
 - Light and dark themes
-- Complete English and Persian interfaces with automatic LTR/RTL layout
+- Complete English, Persian, and Spanish interfaces with automatic LTR/RTL layout
 - Local SQLite storage with no account or cloud service required
 
 ## Screens and Languages
 
-English is the default language. The entire interface can be switched to Persian from **Settings > Language**. Navigation, buttons, status messages, notifications, exercise names, and exercise instructions are updated immediately, and the selected language is saved for future launches.
+English is the default language. The entire interface can be switched to Persian or Spanish from **Settings > Language**. Navigation, buttons, status messages, notifications, exercise names, and exercise instructions are updated immediately, and the selected language is saved for future launches.
 
 ## Technology
 

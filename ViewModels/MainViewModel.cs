@@ -41,7 +41,8 @@ public partial class MainViewModel : ObservableObject
     public IReadOnlyList<LanguageOption> Languages { get; } =
     [
         new("en", "English"),
-        new("fa", "فارسی")
+        new("fa", "فارسی"),
+        new("es", "Español")
     ];
     public System.Windows.FlowDirection LayoutDirection => _localization.IsPersian
         ? System.Windows.FlowDirection.RightToLeft
@@ -69,7 +70,7 @@ public partial class MainViewModel : ObservableObject
         startWithWindows = settings.Current.StartWithWindows;
         eyeRuleEnabled = settings.Current.EyeRuleEnabled;
         darkMode = settings.Current.DarkMode;
-        selectedLanguageCode = settings.Current.LanguageCode == "fa" ? "fa" : "en";
+        selectedLanguageCode = settings.Current.LanguageCode is "fa" or "es" ? settings.Current.LanguageCode : "en";
 
         ApplyTheme();
         RefreshLocalizedContent();
@@ -83,7 +84,7 @@ public partial class MainViewModel : ObservableObject
 
     partial void OnSelectedLanguageCodeChanged(string value)
     {
-        if (value is not ("en" or "fa") || value == _localization.CurrentLanguage) return;
+        if (value is not ("en" or "fa" or "es") || value == _localization.CurrentLanguage) return;
         _settings.Current.LanguageCode = value;
         _localization.Apply(value);
         _ = _settings.SaveAsync();

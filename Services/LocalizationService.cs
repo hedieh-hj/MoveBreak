@@ -12,7 +12,7 @@ public sealed class LocalizationService
 
     public void Apply(string? languageCode)
     {
-        var normalized = languageCode == "fa" ? "fa" : "en";
+        var normalized = languageCode is "fa" or "es" ? languageCode : "en";
         var dictionary = new ResourceDictionary
         {
             Source = new Uri($"/MoveBreak;component/Resources/Strings.{normalized}.xaml", UriKind.Relative)

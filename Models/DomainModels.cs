@@ -8,13 +8,15 @@ public sealed class Exercise
     public int Id { get; set; }
     public string TitleEn { get; set; } = "";
     public string TitleFa { get; set; } = "";
+    public string TitleEs { get; set; } = "";
     public string InstructionsEn { get; set; } = "";
     public string InstructionsFa { get; set; } = "";
+    public string InstructionsEs { get; set; } = "";
     public ExerciseCategory Category { get; set; }
     public int DurationSeconds { get; set; }
     public string ImagePath { get; set; } = "";
-    public string GetTitle(string languageCode) => languageCode == "fa" ? TitleFa : TitleEn;
-    public string GetInstructions(string languageCode) => languageCode == "fa" ? InstructionsFa : InstructionsEn;
+    public string GetTitle(string languageCode) => languageCode switch { "fa" => TitleFa, "es" => TitleEs, _ => TitleEn };
+    public string GetInstructions(string languageCode) => languageCode switch { "fa" => InstructionsFa, "es" => InstructionsEs, _ => InstructionsEn };
 }
 public sealed class BreakRecord
 {
