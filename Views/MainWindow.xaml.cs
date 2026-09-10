@@ -12,7 +12,20 @@ public partial class MainWindow : Window
     private bool _exit;
     public MainWindow(MainViewModel vm, NotificationService notifications)
     {
-        InitializeComponent(); DataContext=vm; notifications.ShowRequested += ()=>Dispatcher.Invoke(()=>{Show();WindowState=WindowState.Normal;Activate();}); notifications.ExitRequested += ()=>_exit=true;
+        InitializeComponent();
+        DataContext = vm;
+        notifications.ShowRequested += () => Dispatcher.Invoke(ShowAndActivate);
+        notifications.ExitRequested += () => _exit = true;
     }
+
+    public void ShowAndActivate()
+    {
+        Topmost = true;
+        if (!IsVisible) Show();
+        if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal;
+        Activate();
+        Focus();
+    }
+
     protected override void OnClosing(System.ComponentModel.CancelEventArgs e) { if(!_exit){e.Cancel=true;Hide();} base.OnClosing(e); }
 }

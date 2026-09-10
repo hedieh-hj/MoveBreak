@@ -23,7 +23,7 @@ public partial class App : System.Windows.Application
         var settings = _provider.GetRequiredService<SettingsService>();
         settings.LoadAsync().GetAwaiter().GetResult();
         _provider.GetRequiredService<LocalizationService>().Apply(settings.Current.LanguageCode);
-        _provider.GetRequiredService<MainWindow>().Show();
+        _provider.GetRequiredService<MainWindow>().ShowAndActivate();
     }
     protected override void OnExit(ExitEventArgs e) { _provider?.Dispose(); base.OnExit(e); }
 }
