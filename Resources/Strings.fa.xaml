@@ -18,7 +18,6 @@
   <system:String x:Key="SittingTime">زمان نشستن امروز: </system:String>
   <system:String x:Key="Scheduling">تنظیمات زمان‌بندی</system:String>
   <system:String x:Key="ReminderInterval">فاصله یادآوری (دقیقه)</system:String>
-  <system:String x:Key="BreakDuration">مدت استراحت (دقیقه)</system:String>
   <system:String x:Key="EyeRule">فعال‌بودن قانون ۲۰-۲۰-۲۰</system:String>
   <system:String x:Key="Sound">پخش صدای اعلان</system:String>
   <system:String x:Key="StartWindows">اجرا با شروع ویندوز</system:String>

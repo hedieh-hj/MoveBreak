@@ -18,7 +18,6 @@
   <system:String x:Key="SittingTime">Sitting time today: </system:String>
   <system:String x:Key="Scheduling">Schedule settings</system:String>
   <system:String x:Key="ReminderInterval">Reminder interval (minutes)</system:String>
-  <system:String x:Key="BreakDuration">Break duration (minutes)</system:String>
   <system:String x:Key="EyeRule">Enable the 20-20-20 eye rule</system:String>
   <system:String x:Key="Sound">Play notification sound</system:String>
   <system:String x:Key="StartWindows">Start with Windows</system:String>

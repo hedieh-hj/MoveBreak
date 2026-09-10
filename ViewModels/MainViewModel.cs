@@ -28,7 +28,6 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty] private int sittingMinutesToday;
     [ObservableProperty] private bool isBreakVisible;
     [ObservableProperty] private int reminderMinutes;
-    [ObservableProperty] private int breakMinutes;
     [ObservableProperty] private bool soundEnabled;
     [ObservableProperty] private bool startWithWindows;
     [ObservableProperty] private bool eyeRuleEnabled;
@@ -66,7 +65,6 @@ public partial class MainViewModel : ObservableObject
 
         _currentExerciseModel = exerciseService.Next(settings.Current.EyeRuleEnabled, 0);
         reminderMinutes = settings.Current.ReminderMinutes;
-        breakMinutes = settings.Current.BreakMinutes;
         soundEnabled = settings.Current.SoundEnabled;
         startWithWindows = settings.Current.StartWithWindows;
         eyeRuleEnabled = settings.Current.EyeRuleEnabled;
@@ -170,7 +168,6 @@ public partial class MainViewModel : ObservableObject
         try
         {
             _settings.Current.ReminderMinutes = Math.Clamp(ReminderMinutes, 1, 180);
-            _settings.Current.BreakMinutes = Math.Clamp(BreakMinutes, 1, 30);
             _settings.Current.SoundEnabled = SoundEnabled;
             _settings.Current.StartWithWindows = StartWithWindows;
             _settings.Current.EyeRuleEnabled = EyeRuleEnabled;

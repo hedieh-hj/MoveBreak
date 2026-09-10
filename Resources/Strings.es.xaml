@@ -18,7 +18,6 @@
   <system:String x:Key="SittingTime">Tiempo sentado hoy: </system:String>
   <system:String x:Key="Scheduling">Configuración de horarios</system:String>
   <system:String x:Key="ReminderInterval">Intervalo del recordatorio (minutos)</system:String>
-  <system:String x:Key="BreakDuration">Duración del descanso (minutos)</system:String>
   <system:String x:Key="EyeRule">Activar la regla visual 20-20-20</system:String>
   <system:String x:Key="Sound">Reproducir sonido de notificación</system:String>
   <system:String x:Key="StartWindows">Iniciar con Windows</system:String>

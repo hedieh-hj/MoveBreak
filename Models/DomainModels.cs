@@ -37,7 +37,6 @@ public sealed class AppSettings
 {
     public int Id { get; set; } = 1;
     public int ReminderMinutes { get; set; } = 45;
-    public int BreakMinutes { get; set; } = 2;
     public int IdleThresholdMinutes { get; set; } = 3;
     public bool SoundEnabled { get; set; } = true;
     public bool StartWithWindows { get; set; }
