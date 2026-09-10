@@ -90,6 +90,19 @@ public partial class MainViewModel : ObservableObject
         _ = _settings.SaveAsync();
     }
 
+    partial void OnDarkModeChanged(bool value)
+    {
+        _settings.Current.DarkMode = value;
+        ApplyTheme();
+        _ = PersistDarkModeAsync();
+    }
+
+    private async Task PersistDarkModeAsync()
+    {
+        try { await _settings.SaveAsync(); }
+        catch { SettingsMessage = _localization.Text("SettingsSaveFailed"); }
+    }
+
     private void RefreshLocalizedContent()
     {
         WpfApplication.Current.Dispatcher.Invoke(() =>
@@ -179,6 +192,8 @@ public partial class MainViewModel : ObservableObject
         resources["Surface"] = Brush(DarkMode ? "#22312E" : "#FFFFFF");
         resources["ForegroundBrush"] = Brush(DarkMode ? "#E8F1EF" : "#263A37");
         resources["MutedBrush"] = Brush(DarkMode ? "#A9BBB7" : "#60706D");
+        resources["ControlSurfaceBrush"] = Brush(DarkMode ? "#2E403C" : "#E9EFED");
+        resources["ControlBorderBrush"] = Brush(DarkMode ? "#415651" : "#D4DEDB");
     }
 
     private static System.Windows.Media.SolidColorBrush Brush(string color) => new(
