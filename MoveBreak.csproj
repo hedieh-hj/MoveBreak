@@ -7,11 +7,15 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>Assets\MoveBreak.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.8" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="8.0.1" />
   </ItemGroup>
-  <ItemGroup><Resource Include="Assets\Exercises\*.png" /></ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Exercises\*.png" />
+    <Resource Include="Assets\MoveBreak.ico" />
+  </ItemGroup>
 </Project>

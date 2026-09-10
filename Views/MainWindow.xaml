@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:local="clr-namespace:MoveBreak.Views"
         Title="MoveBreak" Width="1050" Height="700" MinWidth="900" MinHeight="620"
+        Icon="/Assets/MoveBreak.ico"
         WindowStartupLocation="CenterScreen" FlowDirection="{Binding LayoutDirection}"
         Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}"
         FontFamily="Segoe UI">
