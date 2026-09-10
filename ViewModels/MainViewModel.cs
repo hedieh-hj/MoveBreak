@@ -77,7 +77,6 @@ public partial class MainViewModel : ObservableObject
         timer.BreakDue += OnBreakDue;
         localization.LanguageChanged += RefreshLocalizedContent;
         notifications.PauseRequested += TogglePause;
-        notifications.ExitRequested += () => WpfApplication.Current.Shutdown();
         _ = RefreshStatsAsync();
         UpdateClock();
     }

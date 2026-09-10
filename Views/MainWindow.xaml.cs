@@ -15,17 +15,31 @@ public partial class MainWindow : Window
         InitializeComponent();
         DataContext = vm;
         notifications.ShowRequested += () => Dispatcher.Invoke(ShowAndActivate);
-        notifications.ExitRequested += () => _exit = true;
+        notifications.ExitRequested += () => Dispatcher.Invoke(() =>
+        {
+            _exit = true;
+            System.Windows.Application.Current.Shutdown();
+        });
     }
 
     public void ShowAndActivate()
     {
         Topmost = true;
+        ShowInTaskbar = true;
         if (!IsVisible) Show();
         if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal;
         Activate();
         Focus();
     }
 
-    protected override void OnClosing(System.ComponentModel.CancelEventArgs e) { if(!_exit){e.Cancel=true;Hide();} base.OnClosing(e); }
+    protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+    {
+        if (!_exit)
+        {
+            e.Cancel = true;
+            ShowInTaskbar = false;
+            Hide();
+        }
+        base.OnClosing(e);
+    }
 }

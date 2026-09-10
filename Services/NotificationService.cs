@@ -19,6 +19,8 @@ public sealed class NotificationService : IDisposable
         _exitItem = menu.Items.Add("", null, (_,_) => ExitRequested?.Invoke());
         _icon = new Forms.NotifyIcon { Icon = Drawing.SystemIcons.Information, Text = "MoveBreak", Visible = true, ContextMenuStrip = menu };
         _icon.DoubleClick += (_,_) => ShowRequested?.Invoke();
+        _icon.MouseClick += (_, e) => { if (e.Button == Forms.MouseButtons.Left) ShowRequested?.Invoke(); };
+        _icon.BalloonTipClicked += (_, _) => ShowRequested?.Invoke();
         UpdateLanguage();
         localization.LanguageChanged += UpdateLanguage;
     }
