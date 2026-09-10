@@ -194,8 +194,12 @@ public partial class MainViewModel : ObservableObject
         resources["Surface"] = Brush(DarkMode ? "#22312E" : "#FFFFFF");
         resources["ForegroundBrush"] = Brush(DarkMode ? "#E8F1EF" : "#263A37");
         resources["MutedBrush"] = Brush(DarkMode ? "#A9BBB7" : "#60706D");
+        resources["AccentForegroundBrush"] = Brush(DarkMode ? "#8FD3C7" : "#3F776F");
         resources["ControlSurfaceBrush"] = Brush(DarkMode ? "#2E403C" : "#E9EFED");
+        resources["ControlHoverBrush"] = Brush(DarkMode ? "#38504A" : "#DDE8E5");
         resources["ControlBorderBrush"] = Brush(DarkMode ? "#415651" : "#D4DEDB");
+        resources["DisabledForegroundBrush"] = Brush(DarkMode ? "#71847F" : "#91A09C");
+        resources["FocusBrush"] = Brush(DarkMode ? "#71B8AC" : "#4F8F86");
     }
 
     private static System.Windows.Media.SolidColorBrush Brush(string color) => new(
