@@ -25,6 +25,8 @@
   <system:String x:Key="DarkMode">Dark mode</system:String>
   <system:String x:Key="Language">Language</system:String>
   <system:String x:Key="SaveSettings">Save settings</system:String>
+  <system:String x:Key="SettingsSaved">Settings saved.</system:String>
+  <system:String x:Key="SettingsSaveFailed">Settings could not be saved. Please try again.</system:String>
   <system:String x:Key="TimeToMove">Time to move</system:String>
   <system:String x:Key="Done">Done</system:String>
   <system:String x:Key="SnoozeFive">Remind me in 5 minutes</system:String>

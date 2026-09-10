@@ -110,6 +110,7 @@
                             <CheckBox IsChecked="{Binding StartWithWindows}" Content="{DynamicResource StartWindows}" Margin="0,5"/>
                             <CheckBox IsChecked="{Binding DarkMode}" Content="{DynamicResource DarkMode}" Margin="0,5"/>
                             <Button Style="{StaticResource Primary}" Command="{Binding SaveSettingsCommand}" Content="{DynamicResource SaveSettings}" Margin="0,22,0,0"/>
+                            <TextBlock Text="{Binding SettingsMessage}" Foreground="#4F8F86" HorizontalAlignment="Center" Margin="0,8,0,0"/>
                         </StackPanel>
                     </Border>
                 </ScrollViewer>

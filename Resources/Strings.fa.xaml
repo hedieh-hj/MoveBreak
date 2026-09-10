@@ -25,6 +25,8 @@
   <system:String x:Key="DarkMode">حالت تاریک</system:String>
   <system:String x:Key="Language">زبان</system:String>
   <system:String x:Key="SaveSettings">ذخیره تنظیمات</system:String>
+  <system:String x:Key="SettingsSaved">تنظیمات ذخیره شد.</system:String>
+  <system:String x:Key="SettingsSaveFailed">ذخیره تنظیمات انجام نشد؛ دوباره تلاش کنید.</system:String>
   <system:String x:Key="TimeToMove">وقت حرکت است</system:String>
   <system:String x:Key="Done">انجام شد</system:String>
   <system:String x:Key="SnoozeFive">۵ دقیقه بعد یادآوری کن</system:String>

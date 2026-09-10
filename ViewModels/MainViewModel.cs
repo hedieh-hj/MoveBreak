@@ -34,6 +34,7 @@ public partial class MainViewModel : ObservableObject
     [ObservableProperty] private bool eyeRuleEnabled;
     [ObservableProperty] private bool darkMode;
     [ObservableProperty] private string selectedLanguageCode;
+    [ObservableProperty] private string settingsMessage = "";
 
     public ObservableCollection<int> WeekValues { get; } = new();
     public ObservableCollection<ExerciseDisplayItem> Exercises { get; } = new();
@@ -151,16 +152,24 @@ public partial class MainViewModel : ObservableObject
     [RelayCommand]
     private async Task SaveSettingsAsync()
     {
-        _settings.Current.ReminderMinutes = Math.Clamp(ReminderMinutes, 1, 180);
-        _settings.Current.BreakMinutes = Math.Clamp(BreakMinutes, 1, 30);
-        _settings.Current.SoundEnabled = SoundEnabled;
-        _settings.Current.StartWithWindows = StartWithWindows;
-        _settings.Current.EyeRuleEnabled = EyeRuleEnabled;
-        _settings.Current.DarkMode = DarkMode;
-        _settings.Current.LanguageCode = SelectedLanguageCode;
-        ApplyTheme();
-        await _settings.SaveAsync();
-        _timer.Reset();
+        try
+        {
+            _settings.Current.ReminderMinutes = Math.Clamp(ReminderMinutes, 1, 180);
+            _settings.Current.BreakMinutes = Math.Clamp(BreakMinutes, 1, 30);
+            _settings.Current.SoundEnabled = SoundEnabled;
+            _settings.Current.StartWithWindows = StartWithWindows;
+            _settings.Current.EyeRuleEnabled = EyeRuleEnabled;
+            _settings.Current.DarkMode = DarkMode;
+            _settings.Current.LanguageCode = SelectedLanguageCode;
+            ApplyTheme();
+            await _settings.SaveAsync();
+            _timer.Reset();
+            SettingsMessage = _localization.Text("SettingsSaved");
+        }
+        catch
+        {
+            SettingsMessage = _localization.Text("SettingsSaveFailed");
+        }
     }
 
     private void ApplyTheme()
