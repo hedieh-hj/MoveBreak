@@ -15,6 +15,7 @@ The app runs quietly in the Windows System Tray, pauses its sitting timer when t
 - Automatic pause when Windows is locked or the user is idle
 - Notification deferral while a full-screen application is active
 - Windows System Tray integration
+- Prominent centered, topmost break prompt when a reminder becomes due
 - Completed, skipped, and snoozed break history
 - Daily sitting-time estimate and seven-day activity overview
 - Optional notification sound

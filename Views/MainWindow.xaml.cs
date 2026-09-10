@@ -14,6 +14,7 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         DataContext = vm;
+        vm.BreakPresentationRequested += () => Dispatcher.Invoke(ShowBreakPrompt);
         notifications.ShowRequested += () => Dispatcher.Invoke(ShowAndActivate);
         notifications.ExitRequested += () => Dispatcher.Invoke(() =>
         {
@@ -30,6 +31,16 @@ public partial class MainWindow : Window
         if (WindowState == WindowState.Minimized) WindowState = WindowState.Normal;
         Activate();
         Focus();
+    }
+
+    private void ShowBreakPrompt()
+    {
+        WindowState = WindowState.Normal;
+        ShowAndActivate();
+        UpdateLayout();
+        var workArea = SystemParameters.WorkArea;
+        Left = workArea.Left + Math.Max(0, (workArea.Width - ActualWidth) / 2);
+        Top = workArea.Top + Math.Max(0, (workArea.Height - ActualHeight) / 2);
     }
 
     protected override void OnClosing(System.ComponentModel.CancelEventArgs e)

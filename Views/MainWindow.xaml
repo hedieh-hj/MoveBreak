@@ -102,9 +102,9 @@
                             <TextBlock Text="{DynamicResource Language}" Margin="0,22,0,5"/>
                             <ComboBox ItemsSource="{Binding Languages}" DisplayMemberPath="DisplayName" SelectedValuePath="Code" SelectedValue="{Binding SelectedLanguageCode, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Padding="10"/>
                             <TextBlock Text="{DynamicResource ReminderInterval}" Margin="0,14,0,5"/>
-                            <TextBox Text="{Binding ReminderMinutes}" Padding="10"/>
+                            <TextBox Text="{Binding ReminderMinutes, UpdateSourceTrigger=PropertyChanged}" Padding="10"/>
                             <TextBlock Text="{DynamicResource BreakDuration}" Margin="0,14,0,5"/>
-                            <TextBox Text="{Binding BreakMinutes}" Padding="10"/>
+                            <TextBox Text="{Binding BreakMinutes, UpdateSourceTrigger=PropertyChanged}" Padding="10"/>
                             <CheckBox IsChecked="{Binding EyeRuleEnabled}" Content="{DynamicResource EyeRule}" Margin="0,18,0,5"/>
                             <CheckBox IsChecked="{Binding SoundEnabled}" Content="{DynamicResource Sound}" Margin="0,5"/>
                             <CheckBox IsChecked="{Binding StartWithWindows}" Content="{DynamicResource StartWindows}" Margin="0,5"/>

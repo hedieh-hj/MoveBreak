@@ -38,6 +38,7 @@ public partial class MainViewModel : ObservableObject
 
     public ObservableCollection<int> WeekValues { get; } = new();
     public ObservableCollection<ExerciseDisplayItem> Exercises { get; } = new();
+    public event Action? BreakPresentationRequested;
     public IReadOnlyList<LanguageOption> Languages { get; } =
     [
         new("en", "English"),
@@ -140,6 +141,7 @@ public partial class MainViewModel : ObservableObject
             IsBreakVisible = true;
             _timer.Pause();
             _notifications.ShowBreak(_localization.Text("BreakNotificationTitle"), CurrentExercise.Title, SoundEnabled);
+            BreakPresentationRequested?.Invoke();
         });
     }
 
